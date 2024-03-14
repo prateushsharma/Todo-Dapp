@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+$colorTheme: #F5EFE1;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: $colorTheme;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.btn {
+  border: 2px solid darken($colorTheme, 15%);
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 250px;
+  min-height: 80px;
+}
+
+.myButton {
+  @extend .btn;
+  background: darken($colorTheme, 5%);
+  color: darken($colorTheme, 60%);
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  transform: skewX(20deg);
+  
+  
+  &::before {
+    @extend .btn;
+    content: attr(data-label);
+    background: $colorTheme;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: -1rem; left: 1rem;
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+  
+  &:hover {
+      &::before {
+      top: -2px; left: -2px;
+    }
+  }
+  
+  &:focus {
+    outline: none;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.custom-font {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  font-size: 16px; /* Default font size */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.large-text {
+  font-size: 24px; /* Larger font size */
 }
